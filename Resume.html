@@ -1,0 +1,247 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+
+<title>Resume</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+<link href="https://fonts.googleapis.com/css?family=Raleway:500,200,700" rel="stylesheet">
+
+<style>
+
+    @page { size: auto;  margin: 0mm; } h1,h2,h3,h4,h5,h6,p,a,li,span{font-family:'Project Sans Thin',sans-serif; line-height: 120%;}.resume{background-color:#1f1f1f;min-height:100vh}.resume .main{height:100%;width:700px;background-color:#fff;padding:0 25px;margin:0 auto}.resume .main .header{border-bottom:2px solid #ddd;border-top:30px solid #fff}.resume .main .header .page-title-container{margin:0 auto;text-align:center;}.resume .main .header .page-title{font-size:26pt;display:inline}.resume .main .header .page-title-first{font-weight:400}.resume .main .header .page-title-last{font-weight:200}.resume .main .header .header-icons{padding-bottom:3px;text-align:center}.resume .main .header .header-icons .page-subhead{margin:1rem 15px;display:inline}.resume .main .header .fa{padding-right:10px}.resume .main .indented{padding-left:40px}.resume .main .category-row{padding-bottom:1px}.resume .main .category-row .category{margin-right:10px;padding-top:1px;padding-left:5px;padding-right:10px;border-bottom:1px solid #ddd;border-right:1px solid #ddd}.resume .main .category-row .category-row-title{margin:.3rem 0 .2rem}.resume .main .category-row .category-title,.resume .main .category-row .category-subtitle{display:table-row-group;line-height: 100%;font-size:12px;padding-top:10px;margin-top:10px;margin-bottom:5px;font-weight: 500} .resume .main .category-row .category-title,.resume .main .category-row .category-date {display: inline;margin-top: 10px;margin-bottom: 5px;font-weight: 600}.resume .main .category-row .category-bullets{margin-top:5px;margin-bottom:10px;}.resume .main .category-row p,.resume .main .category-row li{font-size:12px}sidebar-category:last-of-type .category{border-bottom:0!important;padding-bottom:0!important;margin-bottom:0!important}category:last-of-type category-item:last-of-type .category{border-bottom:0!important;padding-bottom:0!important;margin-bottom:0!important}
+
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+
+<script>angular.module("Resume", ["ngMaterial"])
+    .component("resume", { transclude: true, template: '<div class="resume">\n    <section class="main" ng-transclude></section>\n  </div>' })
+    .component("resumeHeading", { controllerAs: "r", bindings: { firstName: "@", lastName: "@", address: "@", website: "@", phone: "@", email: "@", github: "@", linkedin: "@" }, template: '<div class="header">\n    <div class="page-title-container">\n      <h1 class="page-title page-title-first">{{r.firstName}}</h1>\n      <h1 class="page-title page-title-last">{{r.lastName}}</h1>\n    </div>\n    <div class="header-icons">\n      <span ng-if="r.address" class="md-subhead page-subhead"><i class="fa fa-lg fa-home"></i>{{r.address}}</br></span>\n      <span ng-if="r.phone" class="md-subhead page-subhead"><i class="fa fa-lg fa-phone"></i>{{r.phone}}</span>\n      <span ng-if="r.email" class="md-subhead page-subhead"><i class="fa fa-md fa-envelope"></i>{{r.email}}</span>\n      <span ng-if="r.github" class="md-subhead page-subhead"><i class="fa fa-lg fa-github"></i>{{r.github}}</span>\n      <span ng-if="r.linkedin" class="md-subhead page-subhead"><i class="fa fa-lg fa-linkedin-square"></i>{{r.linkedin}}</span>\n    </div>\n  </div>' })
+    .component("resumeBody", { transclude: true, template: '<div layout="row" ng-transclude></div>' })
+    .component("resumeColumn", { transclude: true, template: "<div ng-transclude></div>" }).component("sidebarCategory", { controllerAs: "r", bindings: { name: "@" }, transclude: true, template: '<div flex="" class="category-row">\n    <div class="category">\n      <h5 class="category-row-title">{{r.name}}</h5>\n      <ng-transclude></ng-transclude>\n    </div>\n  </div>' })
+    .component("category", { controllerAs: "r", bindings: { name: "@" }, transclude: true, template: '<div flex="" class="category-row">\n    <h4 class="category-row-title">{{r.name}}</h4>\n    <ng-transclude></ng-transclude>\n  </div>' })
+    .component("categoryItem", { controllerAs: "r", bindings: { title: "@", subtitle: "@", date: '@' }, transclude: true, template: '<div class="category">\n      <h5 class="category-title md-body-2">{{r.title}}</h5>&nbsp;\n      <h5 class="category-subtitle md-caption">{{r.subtitle}}</h5>\n      <h5 class="category-date md-caption">{{r.date}}</h5>\n      <ul class="category-bullets" ng-transclude></ul>\n  </div>' });
+
+</script>
+
+
+
+</head><body ng-app="Resume" ng-cloak="">
+
+    <resume>
+
+        <resume-heading first-name="Fahimul" last-name="Gaffar" address="St John's, Canada" linkedin="Fahimul Gaffar"  email="fgaffar@mun.ca" phone="(709) 280-3988">
+
+        </resume-heading>
+
+        <resume-body>
+
+            <resume-column flex="20">
+
+                <sidebar-category name="Education">
+
+                    <p style="margin-top: 10px;  margin-bottom: 10px; ">
+                        <b>Memorial University of Newfoundland</b>
+
+                    </p>
+
+                    <p style="margin-top: 10px;  margin-bottom: 10px; ">Graduating May 2024</p>
+
+                </sidebar-category>
+
+                <sidebar-category name="Certifications" style=" font-size: 16px;">
+
+                    <p style="margin-top: 10px; margin-bottom: 10px;">
+                        Data Science in Python
+
+
+                    </p>
+
+                    <p style="margin-top: 10px; margin-bottom: 10px;">
+                        Python Data Structures
+
+
+                    </p>
+
+                    <p style="margin-top: 10px; margin-bottom: 10px;">
+                        Introduction to HTML
+
+
+                    </p>
+
+                    <p style="margin-top: 10px; margin-bottom: 10px;">
+                        Introduction to Cybersecurity Tools & Cyber Attacks - Coursera provided by IBM
+
+                    </p>
+
+                </sidebar-category>
+
+                <sidebar-category name="Interests" style=" font-size: 16px;">
+
+                    <p style="margin-top: 10px; margin-bottom: 10px;">
+                        <b>Enterprunership</b>
+
+                    <p style="margin-top: 0px; margin-bottom: 6px; font-size: 12px;">
+                        Built two bussiness in Bangladesh
+                    </p>
+
+
+                    </p>
+
+                    <p style="margin-top: 10px; margin-bottom: 10px;">
+                        <b>Tutoring</b>
+
+                        <p style="margin-top: 0px; margin-bottom: 6px; font-size: 12px;">
+                            Taught twelve graders in Canada and Bangladesh
+                        </p>
+
+                    </p>
+
+                    <p style="margin-top: 10px; margin-bottom: 10px;">
+                        <b>Instagram and Tiktok Influencing</b>
+
+                        <p style="margin-top: 0px; margin-bottom: 6px; font-size: 12px;">
+                            12K followers in Instagram and 23K followers in Tiktok
+                        </p>
+
+                    </p>
+
+                    <p style="margin-top: 10px; margin-bottom: 10px;">
+                        <b>Physical Fitness</b>
+
+                        <p style="margin-top: 0px; margin-bottom: 6px; font-size: 12px;">
+                            Lost 77 pounds gradually
+                        </p>
+
+                    </p>
+
+                    <p style="margin-top: 10px; margin-bottom: 10px;">
+                        <b>Master in FIFA</b>
+
+                        <p style="margin-top: 0px; margin-bottom: 6px; font-size: 12px;">
+                            Unbeatable in FIFA
+                        </p>
+                    </p>
+
+                </sidebar-category>
+
+            </resume-column>
+
+            <resume-column flex="100">
+
+                <category name="Experience">
+
+                    <category-item title="Web Developer" subtitle="SP Driving School: Sept 2022 - Present">
+
+                        <li>Developed custom WordPress themes and plugins, integrating third-party services, and ensuring website functionality</li>
+
+                        <li>Resolved issues and optimized website performance, guaranteeing fast loading and reliability</li>
+
+                        <li>Stayed updated with WordPress trends and technologies, consistently improving website capabilities</li>
+
+                    </category-item>
+
+                    <category-item title="Lab Instructor" subtitle="North South University: Sept 2021 - April 2022">
+
+                        <li>Facilitated C++ Programming labs, including teaching, grading, and mentoring students</li>
+
+                        <li>Assessed and guided individual student progress, offering tailored support and feedback</li>
+
+                        <li>Contributed to course material maintenance and enhancement, ensuring its relevance and effectiveness</li>
+
+                    </category-item>
+
+                </category>
+
+                <category name="Personal Projects">
+
+                    <category-item title="Portfolio Website &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp https://github.com/fahimulgaffar/portfolio" subtitle="Web Developer">
+
+                        <li>A personal website live under the domain www.fahimulgaffar.com that showcases my skills and helps me connect with other professionals in my field</li>
+
+                        <li>Optimised for top search engines to rank first when searched for "Fahimul Gaffar"</li>
+
+                    </category-item>
+
+                    <category-item title="Pheonix Aerospace Club Website &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; https://github.com/fahimulgaffar/Pheonix-Aerospace-Club-Website" subtitle="Web Developer">
+
+                        <li>Developed and launched an engineering club website, showcasing my design and development prowess in order to attract sponsors and raise fundings</li>
+
+                        <li>Leveraged React.js, Node.js, and JavaScript to bring the project to life, creating an interactive and dynamic web experience</li>
+
+                    </category-item>
+
+                    <category-item title="Theme Changing Contact Manager &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; https://github.com/fahimulgaffar/Theme-Changing-Contact-Manager" subtitle="App Developer">
+
+                        <li>Features included but was not limited to adding, deleting, storing and updating previously stored contacts</li>
+
+                        <li>Implemented in windows OS using JavaFX, and CSS</li>
+
+                    </category-item>
+
+                    <category-item title="Custom CV Format &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; https://github.com/fahimulgaffar/Resume-Template" subtitle="Graphics Designer">
+
+                        <li>Crafted a unique CV format from the ground up, demonstrating my creative design skills and attention to detail</li>
+
+                        <li>Meticulously handcrafted the CV using HTML and CSS, selecting icons, styles, and fonts to create a customized and visually appealing presentation</li>
+
+                    </category-item>
+
+                </category>
+
+                <category name="Technical Skills and Relevant Courseworks">
+
+                    <category-item title="Technical Skills">
+
+                        <div style="display: grid; grid-template-columns: 1fr;">
+
+                            <li>Programming languages: Python, Java, C++, JavaScript, HTML, CSS</li>
+
+                            <li>Tech Stacks: Node.js, React.js, MySQL, GitHub</li>
+
+                        </div>
+
+
+                    </category-item>
+
+                    <category-item title="Relevant Courseworks">
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr;">
+
+                            <li>Data Structures and Algorithms</li>
+
+                            <li>Data Preparation Techniques</li>
+
+                            <li>Database Systems</li>
+
+                            <li>Operating Systems</li>
+
+                            <li>Software Engineering</li>
+
+                            <li>Computer Architecture</li>
+
+                        </div>
+
+                    </category-item>
+
+                </category>
+
+            </resume-column>
+
+        </resume-body>
+
+    </resume>
+
+</body></html>
